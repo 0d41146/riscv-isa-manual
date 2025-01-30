@@ -16,7 +16,7 @@ and RV64G.
 |===
 |inst[4:2] .2+|000 .2+|001   .2+|010     .2+|011   .2+|100 .2+|101     .2+|110          .2+|111 (>32b)
 |inst[6:5]
-|00           |LOAD   |LOAD-FP  |OP-CFU     |MISC-MEM |OP-IMM |AUIPC      |OP-IMM-32       |48b
+|00           |LOAD   |LOAD-FP  |_custom-0_ |MISC-MEM |OP-IMM |AUIPC      |OP-IMM-32       |48b
 |01           |STORE  |STORE-FP |_custom-1_ |AMO      |OP     |LUI        |OP-32           |64b
 |10           |MADD   |MSUB     |NMSUB      |NMADD    |OP-FP  |OP-V       |_custom-2/rv128_|48b
 |11           |BRANCH |JALR     |_reserved_ |JAL      |SYSTEM |OP-VE      |_custom-3/rv128_|&#8805;80b
@@ -121,9 +121,13 @@ ISA.
 [%autowidth.stretch,float="center",align="center",cols="^2m,^2m,^2m,^2m,<2m,>3m, <4m, >4m, <4m, >4m, <4m, >4m, <4m, >4m, <6m"]
 |===
 15+^|*Custom Instruction Set*
- 4+^|0000000        2+^|imag   2+^|real   2+^|001    2+^|00000           2+^|0001011 <|CFU_STORE
- 4+^|0000000        2+^|00000   2+^|twiddle   2+^|010    2+^|00000           2+^|0001011 <|CFU_EXEC
- 4+^|0000000        2+^|00000   2+^|00000   2+^|100    2+^|rd           2+^|0001011 <|CFU_LOAD
+ 4+^|0000000        2+^|rs2     2+^|rs1     2+^|001    2+^|00000    2+^|0001011 <|CTM.FFT.ST
+ 4+^|0000000        2+^|00000   2+^|rs1     2+^|010    2+^|00000    2+^|0001011 <|CTM.FFT.EX
+ 4+^|0000000        2+^|00000   2+^|00000   2+^|100    2+^|rd       2+^|0001011 <|CTM.FFT.LD
+ 4+^|0100000        2+^|00000   2+^|rs1     2+^|001    2+^|rd       2+^|0001011 <|CTM.NQ.INI
+ 4+^|0100000        2+^|00000   2+^|00000   2+^|010    2+^|rd       2+^|0001011 <|CTM.NQ.EX
+ 4+^|0100000        2+^|00000   2+^|00000   2+^|100    2+^|rd       2+^|0001011 <|CTM.NQ.RET
+
 |===
 [%autowidth.stretch,float="center",align="center",cols="^2m,^2m,^2m,^2m,<2m,>3m, <4m, >4m, <4m, >4m, <4m, >4m, <4m, >4m, <6m"]
 |===

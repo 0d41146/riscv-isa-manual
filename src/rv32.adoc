@@ -258,6 +258,9 @@ instructions, there is some small additional overhead, but the most
 common short forward branches have straightforward immediate encodings.
 ====
 
+=== Custom Instructinos
+include::images/wavedrom/custom-inst.edn[]
+
 === Integer Computational Instructions
 
 Most integer computational instructions operate on `XLEN` bits of values
